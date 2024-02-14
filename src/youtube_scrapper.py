@@ -22,7 +22,14 @@ class Tab(Enum):
     멤버십='멤버십'
 
 def select_tab(tab_name:Tab):
-    element=driver.find_element(by=webdriver.common.by.By.CSS_SELECTOR,value='[tab-title="홈"]')
+    value = '[tab-title="'+tab_name.value+'"]'
+    element=driver.find_element(by=webdriver.common.by.By.CSS_SELECTOR,value=value)
     if(element==None) :
         print(f'error : no element named ${tab_name}')
     return element
+
+def click_element(element):
+    try:
+        element.click()
+    except Exception as e:
+        print('error: not clickable element')
