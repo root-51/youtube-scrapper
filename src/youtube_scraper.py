@@ -43,3 +43,7 @@ def scroll_to_bottom():
         if new_height == last_height:
             break
         last_height = new_height
+
+def get_all_thubnail(n:int):
+    thubnails = driver.find_elements(by=webdriver.common.by.By.CSS_SELECTOR, value=".yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail")
+    return thubnails
