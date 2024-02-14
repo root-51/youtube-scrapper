@@ -44,6 +44,11 @@ def scroll_to_bottom():
             break
         last_height = new_height
 
-def get_all_thubnail(n:int):
-    thubnails = driver.find_elements(by=webdriver.common.by.By.CSS_SELECTOR, value=".yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail")
-    return thubnails
+def get_all_thumbnails():
+    thumbnails = driver.find_elements(by=webdriver.common.by.By.CSS_SELECTOR, value=".yt-simple-endpoint.inline-block.style-scope.ytd-thumbnail")
+    return thumbnails
+
+def get_video_url(element)-> str:
+    return element.get_attribute("href")
+    
+
