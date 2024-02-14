@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
-
+import time
 chromedriver_autoinstaller.install()
 chrome_options = Options()
 chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
@@ -33,3 +33,13 @@ def click_element(element):
         element.click()
     except Exception as e:
         print('error: not clickable element')
+
+def scroll_to_bottom():
+    last_height = driver.execute_script("return document.documentElement.scrollHeight")
+    while True:
+        driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
+        time.sleep(3)
+        new_height = driver.execute_script("return document.documentElement.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
